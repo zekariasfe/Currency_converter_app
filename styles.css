@@ -1,287 +1,286 @@
 /* Modern Font and Colors */
 :root {
-    --bg-color: #f4fdf4;
-    --text-color: #2d2d2d;
-    --primary-color: #28a745; /* Green Brand */
-    --secondary-color: #6c757d;
-    --card-bg: #ffffff;
-    --btn-hover: #218838;
-    --dark-bg: #1c1c1c;
-    --dark-text: #e1e1e1;
-    --font-family: 'Inter', sans-serif;
-  }
-  
-  [data-theme="dark"] {
-    --bg-color: #1c1c1c;
-    --text-color: #e1e1e1;
-    --primary-color: #38c172; /* Lighter Green for Dark Mode */
-    --secondary-color: #90a4ae;
-    --card-bg: #2b2b2b;
-    --btn-hover: #2e7d32;
-  }
-  
-  body {
-    font-family: var(--font-family);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-  }
-  
-  h1, h2, h3 {
-    font-weight: 600;
-    margin: 0;
-  }
-  
-  .app {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-  }
-  
+  --bg-color: #f4fdf4;
+  --text-color: #2d2d2d;
+  --primary-color: #28a745; /* Green Brand */
+  --secondary-color: #6c757d;
+  --card-bg: #ffffff;
+  --btn-hover: #218838;
+  --dark-bg: #1c1c1c;
+  --dark-text: #e1e1e1;
+  --font-family: 'Inter', sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1c1c1c;
+  --text-color: #e1e1e1;
+  --primary-color: #38c172; /* Lighter Green for Dark Mode */
+  --secondary-color: #90a4ae;
+  --card-bg: #2b2b2b;
+  --btn-hover: #2e7d32;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Two-column layout: wide converter and narrow multi/favorites */
+  gap: 1rem;
+  padding: 2rem;
+  flex: 1;
+  grid-template-areas:
+    "currency-converter multi-currency"
+    "currency-converter favorites";
+}
+
+/* Assign grid areas to sections */
+.currency-converter {
+  grid-area: currency-converter;
+}
+
+.multi-currency {
+  grid-area: multi-currency;
+}
+
+.favorites {
+  grid-area: favorites;
+}
+
+/* Section Styling */
+.multi-currency,
+.currency-converter,
+.favorites {
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust Multi-Currency Section Size */
+.multi-currency {
+  height: 250px; /* Fixed height */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.multi-currency h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  flex-shrink: 0; /* Ensure the header remains visible */
+}
+
+/* Multi-Currency Table */
+.currency-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.currency-table th,
+.currency-table td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.currency-table th {
+  background-color: var(--primary-color);
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.currency-table tr:nth-child(even) {
+  background-color: var(--bg-color);
+}
+
+.currency-table tr:hover {
+  background-color: var(--btn-hover);
+  color: white;
+}
+
+/* Inputs and Buttons */
+.currency-converter .form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}
+
+input, select {
+  width: 100%;
+  padding: 0.5rem; /* Compact padding */
+  font-size: 0.9rem; /* Slightly smaller font size */
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  background-color: var(--bg-color); /* Light or dark depending on theme */
+  color: var(--text-color); /* Adjust text color for light and dark modes */
+  appearance: none; /* Remove default browser styles */
+  cursor: pointer;
+}
+
+input[type="number"],
+input[type="text"] {
+  max-width: 300px; /* Limit the width for "Amount" and "Result" boxes */
+  margin: 0 auto; /* Center within the container */
+}
+
+/* Dropdown Arrow Styling */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236c757d'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+/* Dark Mode Styling for Select and Options */
+[data-theme="dark"] select {
+  background-color: var(--card-bg); /* Use card background for dropdown */
+  color: var(--text-color); /* Ensure good contrast for text */
+  border: 1px solid var(--secondary-color);
+}
+
+[data-theme="dark"] select option {
+  background-color: var(--card-bg); /* Match dropdown background */
+  color: var(--text-color); /* Match text color */
+}
+
+/* Focus Styles */
+select:focus {
+  outline: none;
+  border-color: var(--primary-color); /* Highlight with primary color */
+}
+
+button {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--btn-hover);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--btn-hover);
+}
+
+/* Favorites Section */
+.favorites {
+  max-height: 250px; /* Fixed uniform size */
+  overflow-y: auto;
+}
+
+.favorites h3 {
+  margin-bottom: 1rem;
+}
+
+.favorites .favorites-list div {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.favorites .favorites-list div:hover {
+  background-color: var(--btn-hover);
+  color: white;
+}
+
+.favorites .favorites-list button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.favorites .favorites-list button:hover {
+  color: var(--btn-hover);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
   .container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 1rem;
-    padding: 2rem;
-    flex: 1;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "currency-converter"
+      "multi-currency"
+      "favorites";
   }
-  
-  /* Modern Section Styling */
+
   .multi-currency,
-  .currency-converter,
   .favorites {
-    background-color: var(--card-bg);
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: 200px; /* Adjust height for smaller screens */
   }
-  
-  /* Adjust Multi-Currency Section Size */
-  .multi-currency {
-    height: 280px; /* Adjusted height for the header */
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack sections vertically */
   }
-  
-  /* Multi-Currency Header Styling */
-  .multi-currency h2 {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    flex-shrink: 0; /* Ensure the header remains visible */
+
+  .multi-currency,
+  .favorites {
+    height: 180px; /* Smaller for mobile screens */
   }
-  
-  /* Multi-Currency Table */
-  .currency-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .currency-table th,
-  .currency-table td {
-    text-align: left;
-    padding: 8px 12px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .currency-table th {
-    background-color: var(--primary-color);
-    color: white;
-    position: sticky;
-    top: 0;
-  }
-  
-  .currency-table tr:nth-child(even) {
-    background-color: var(--bg-color);
-  }
-  
-  .currency-table tr:hover {
-    background-color: var(--btn-hover);
-    color: white;
-  }
-  
-  /* Inputs and Buttons */
-  .currency-converter .form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--secondary-color);
-  }
-  
-  input, select {
-    width: 100%;
-    padding: 0.5rem; /* Compact padding */
-    font-size: 0.9rem; /* Slightly smaller font size */
-    border: 1px solid var(--secondary-color);
-    border-radius: 5px;
-    background-color: var(--bg-color); /* Light or dark depending on theme */
-    color: var(--text-color); /* Adjust text color for light and dark modes */
-    appearance: none; /* Remove default browser styles */
-    cursor: pointer;
-  }
-  
+
   input[type="number"],
   input[type="text"] {
-    max-width: 300px; /* Limit the width for "Amount" and "Result" boxes */
-    margin: 0 auto; /* Center within the container */
+    max-width: 250px; /* Smaller on mobile screens */
   }
-  
-  /* Dropdown Arrow Styling */
+
   select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236c757d'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 16px;
+    font-size: 0.85rem; /* Slightly smaller on mobile */
   }
-  
-  /* Dark Mode Styling for Select and Options */
-  [data-theme="dark"] select {
-    background-color: var(--card-bg); /* Use card background for dropdown */
-    color: var(--text-color); /* Ensure good contrast for text */
-    border: 1px solid var(--secondary-color);
-  }
-  
-  [data-theme="dark"] select option {
-    background-color: var(--card-bg); /* Match dropdown background */
-    color: var(--text-color); /* Match text color */
-  }
-  
-  /* Focus Styles */
-  select:focus {
-    outline: none;
-    border-color: var(--primary-color); /* Highlight with primary color */
-  }
-  
-  button {
-    padding: 0.7rem 1rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-  }
-  
-  .btn-primary:hover {
-    background-color: var(--btn-hover);
-  }
-  
-  .btn-secondary {
-    background-color: var(--secondary-color);
-    color: white;
-  }
-  
-  .btn-secondary:hover {
-    background-color: var(--btn-hover);
-  }
-  
-  /* Favorites Section */
-  .favorites {
-    max-height: 250px; /* Fixed uniform size */
-    overflow-y: auto;
-  }
-  
-  .favorites h3 {
-    margin-bottom: 1rem;
-  }
-  
-  .favorites .favorites-list div {
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    border: 1px solid var(--secondary-color);
-    border-radius: 5px;
-    background-color: var(--bg-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .favorites .favorites-list div:hover {
-    background-color: var(--btn-hover);
-    color: white;
-  }
-  
-  .favorites .favorites-list button {
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    cursor: pointer;
-    font-size: 1.2rem;
-  }
-  
-  .favorites .favorites-list button:hover {
-    color: var(--btn-hover);
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 1024px) {
-    .container {
-      grid-template-columns: 1fr;
-    }
-  
-    .multi-currency,
-    .favorites {
-      height: 200px; /* Smaller for tablets */
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column;
-    }
-  
-    .multi-currency,
-    .favorites {
-      height: 180px; /* Smaller for mobile screens */
-    }
-  
-    input[type="number"],
-    input[type="text"] {
-      max-width: 250px; /* Smaller on mobile screens */
-    }
-  
-    select {
-      font-size: 0.85rem; /* Slightly smaller on mobile */
-    }
-  }
-  /* Footer Styles */
-.footer {
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    text-align: center;
-    padding: 1rem;
-    border-top: 1px solid var(--secondary-color);
-    font-size: 0.9rem;
-    margin-top: auto; /* Pushes the footer to the bottom of the page */
-  }
-  
-  .footer p {
-    margin: 0;
-  }
-  
-  [data-theme="dark"] .footer {
-    background-color: var(--dark-bg);
-    color: var(--dark-text);
-  }
-  
+}
