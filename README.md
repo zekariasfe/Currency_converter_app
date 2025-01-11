@@ -1,5 +1,4 @@
-﻿# Currency_converter_app
- # Currency Converter App
+# Currency Converter App
 
 A modern and responsive **Currency Converter App** that allows users to:
 - Convert currencies using real-time exchange rates.
