@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Currency Converter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>💱 Currency Converter</h1>
+      <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+    </header>
+    <main class="container">
+      <aside class="multi-currency">
+        <h2>🌍 Multi-Currency Rates</h2>
+        <div id="multiCurrencyRates"></div>
+      </aside>
+      <section class="currency-converter">
+        <h2>🔄 Convert Currency</h2>
+        <div class="form">
+          <div class="input-group">
+            <label for="fromCurrency">From:</label>
+            <select id="fromCurrency"></select>
+          </div>
+          <div class="input-group">
+            <label for="toCurrency">To:</label>
+            <select id="toCurrency"></select>
+          </div>
+          <div class="input-group">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" placeholder="Enter amount">
+          </div>
+          <button id="convert" class="btn-primary">Convert</button>
+          <div class="input-group">
+            <label for="conversionResult">Result:</label>
+            <input type="text" id="conversionResult" disabled placeholder="Converted value">
+          </div>
+          <button id="addToFavorites" class="btn-secondary">💾 Add to Favorites</button>
+        </div>
+      </section>
+      <section class="extras">
+        <div class="favorites">
+          <h3>❤️ Favorites</h3>
+          <div class="favorites-list"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+  <p>&copy; 2025 by Zekarias Fikru</p>
+</footer>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
